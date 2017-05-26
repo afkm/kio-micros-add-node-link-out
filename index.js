@@ -30,6 +30,7 @@ require('seneca')()
       linkProps += (count > 0) ? ", " + key + ":'" + value + "'" : key + ":'" + value + "'";
       count++;
     });
+    // queryString += `MATCH (a { cuid: '${message.cuid}' }), (b { cuid: '" + message.linkOut + "'}) MERGE (a)-[:" + message.linkType + " { " + linkProps + " }]->(b)\n`;
     queryString += "MATCH (a { cuid: '" + message.cuid + "' }), (b { cuid: '" + message.linkOut + "'}) MERGE (a)-[:" + message.linkType + " { " + linkProps + " }]->(b)\n";
     console.log(queryString);
     session
